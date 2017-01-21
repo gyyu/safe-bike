@@ -28,12 +28,7 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
 
-      .hiddencontrols {
-        margin-top: 0px;
-        text-decoration: none;
-        background: none;
-        outline: none;
-      }
+
 
       #origin-input,
       #destination-input {
@@ -58,12 +53,7 @@
         margin-left: 12px;
         padding: 5px 11px 0px 11px;
       }
-      #hidden-mode-selectors {
-        color:  transparent;
-        background-color: transparent;
-        margin-left: 0px;
-        padding: 0px;
-      }
+  
       #mode-selector label {
         font-family: Roboto;
         font-size: 13px;
@@ -79,20 +69,8 @@
     <input id="destination-input" class="controls" type="text"
         placeholder="Enter a destination location">
 
- <!--  <div id="hidden-mode-selectors" class = "hiddencontrols">
-      <input type="radio" name="type" id="changemode-walking">
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">Transit</label>
-
-      <input type="radio" name="type" id="changemode-driving">
-      <label for="changemode-driving">Driving</label>
-      </div> -->
- <div id="mode-selector" class="controls">
-       <input type="radio" name="type" id="changemode-biking" checked = "checked">
-      <label for="changemode-biking">Biking</label>
     </div>
+
 
   
 
@@ -118,8 +96,8 @@
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
+            infoWindow.setContent('You');
+
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -160,9 +138,7 @@
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
 
-       /* this.setupClickListener('changemode-walking', 'WALKING');
-        this.setupClickListener('changemode-transit', 'TRANSIT');
-        this.setupClickListener('changemode-driving', 'DRIVING'); */
+      
         this.setupClickListener('changemode-biking', 'BICYCLING');
     
 
