@@ -1934,76 +1934,7 @@
 		padding: 0.75em 1em;
 	}
 
-	input[type="checkbox"],
-	input[type="radio"] {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		display: block;
-		float: left;
-		margin-right: -2em;
-		opacity: 0;
-		width: 1em;
-		z-index: -1;
-	}
 
-		input[type="checkbox"] + label,
-		input[type="radio"] + label {
-			text-decoration: none;
-			color: #767d85;
-			cursor: pointer;
-			display: inline-block;
-			font-size: 1em;
-			font-weight: 300;
-			padding-left: 2.4em;
-			padding-right: 0.75em;
-			position: relative;
-		}
-
-			input[type="checkbox"] + label:before,
-			input[type="radio"] + label:before {
-				-moz-osx-font-smoothing: grayscale;
-				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
-				font-style: normal;
-				font-weight: normal;
-				text-transform: none !important;
-			}
-
-			input[type="checkbox"] + label:before,
-			input[type="radio"] + label:before {
-				background: rgba(144, 144, 144, 0.075);
-				border-radius: 4px;
-				border: solid 1px #dee1e3;
-				content: '';
-				display: inline-block;
-				height: 1.65em;
-				left: 0;
-				line-height: 1.58125em;
-				position: absolute;
-				text-align: center;
-				top: 0;
-				width: 1.65em;
-			}
-
-		input[type="checkbox"]:checked + label:before,
-		input[type="radio"]:checked + label:before {
-			background: #f6755e;
-			border-color: #f6755e;
-			color: #ffffff;
-			content: '\f00c';
-		}
-
-		input[type="checkbox"]:focus + label:before,
-		input[type="radio"]:focus + label:before {
-			border-color: #25a2c3;
-			box-shadow: 0 0 0 1px #25a2c3;
-		}
-
-	input[type="checkbox"] + label:before {
-		border-radius: 4px;
-	}
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;
@@ -2383,6 +2314,102 @@
 
 /* Button */
 
+    .onoffswitch {
+    position: relative; width: 150px;
+	float:left;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 14px; color: white; font-family: "Montserrat", Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "Toggle Lights";
+    padding-left: 3px;
+    background-color: #19A833; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Toggle Lights";
+    padding-right: 17px;
+    background-color: #DB5C5C; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 11px; margin: 7px;
+	height: 15px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 120px;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+.onoffswitch2 {
+    position: relative; width: 190px;
+	float: left;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch2-checkbox {
+    display: none;
+}
+.onoffswitch2-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+}
+.onoffswitch2-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch2-inner:before, .onoffswitch2-inner:after {
+    display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 14px; color: white; font-family: "Montserrat", Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch2-inner:before {
+    content: "Toggle Crime Rates";
+    padding-left: 1px;
+    background-color: #19A833; color: #FFFFFF;
+}
+.onoffswitch2-inner:after {
+    content: "Toggle Crime Rates";
+    padding-right: 17px;
+    background-color: #DB5C5C; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch2-switch {
+    display: block; width: 11px; margin: 7px;
+	height: 15px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 165px;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch2-checkbox:checked + .onoffswitch2-label .onoffswitch2-inner {
+    margin-left: 0;
+}
+.onoffswitch2-checkbox:checked + .onoffswitch2-label .onoffswitch2-switch {
+    right: 0px; 
+}
+
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
@@ -2396,7 +2423,7 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #f6755e;
+		background-color: #009900;
 		border-radius: 4px;
 		border: 0;
 		color: #ffffff;
@@ -2425,7 +2452,7 @@
 		input[type="button"]:active,
 		button:active,
 		.button:active {
-			background-color: #f56046;
+			background-color: #ff3333 ;
 		}
 
 		input[type="submit"].icon,
