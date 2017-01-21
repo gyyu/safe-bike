@@ -82,8 +82,8 @@
   </head>
   <body>
     <div id="floating-panel">
-      <button onclick="toggleHeatmap()">Toggle CHRIS</button>
-      <button onclick="toggleHeatmap2()">Toggle GRACE</button>
+      <button onclick="toggleHeatmap()">Toggle Lights</button>
+      <button onclick="toggleHeatmap2()">Toggle Test</button>
       <button onclick="changeGradient()">Change gradient</button>
       <button onclick="changeRadius()">Change radius</button>
       <button onclick="changeOpacity()">Change opacity</button>
@@ -94,16 +94,7 @@
     <input id="destination-input" class="controls" type="text"
         placeholder="Enter a destination location">
 
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" checked="checked">
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">Transit</label>
-
-      <input type="radio" name="type" id="changemode-driving">
-      <label for="changemode-driving">Driving</label>
-    </div>
+    <div id="mode" checked = "true"></div>
 
     <div id="map"></div>
     <script src="js/lights.js"></script>
@@ -239,7 +230,7 @@
         this.map = map;
         this.originPlaceId = null;
         this.destinationPlaceId = null;
-        this.travelMode = 'WALKING';
+        this.travelMode = 'BICYCLING';
         var originInput = document.getElementById('origin-input');
         var destinationInput = document.getElementById('destination-input');
         var modeSelector = document.getElementById('mode-selector');
@@ -251,10 +242,6 @@
             originInput, {placeIdOnly: true});
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
-
-        this.setupClickListener('changemode-walking', 'WALKING');
-        this.setupClickListener('changemode-transit', 'TRANSIT');
-        this.setupClickListener('changemode-driving', 'DRIVING');
 
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
