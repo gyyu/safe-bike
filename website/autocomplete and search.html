@@ -4,6 +4,7 @@
     <title>Place Autocomplete</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -25,6 +26,13 @@
         height: 32px;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .hiddencontrols {
+        margin-top: 0px;
+        text-decoration: none;
+        background: none;
+        outline: none;
       }
 
       #origin-input,
@@ -50,7 +58,12 @@
         margin-left: 12px;
         padding: 5px 11px 0px 11px;
       }
-
+      #hidden-mode-selectors {
+        color:  transparent;
+        background-color: transparent;
+        margin-left: 0px;
+        padding: 0px;
+      }
       #mode-selector label {
         font-family: Roboto;
         font-size: 13px;
@@ -66,8 +79,8 @@
     <input id="destination-input" class="controls" type="text"
         placeholder="Enter a destination location">
 
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" checked="checked">
+ <!--  <div id="hidden-mode-selectors" class = "hiddencontrols">
+      <input type="radio" name="type" id="changemode-walking">
       <label for="changemode-walking">Walking</label>
 
       <input type="radio" name="type" id="changemode-transit">
@@ -75,7 +88,13 @@
 
       <input type="radio" name="type" id="changemode-driving">
       <label for="changemode-driving">Driving</label>
+      </div> -->
+ <div id="mode-selector" class="controls">
+       <input type="radio" name="type" id="changemode-biking" checked = "checked">
+      <label for="changemode-biking">Biking</label>
     </div>
+
+  
 
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsXgmx0SmTZeF5KdrqaRWuUYK3xqSed9Q&libraries=places&callback=initMap" async defer>   </script>
@@ -128,7 +147,7 @@
         this.map = map;
         this.originPlaceId = null;
         this.destinationPlaceId = null;
-        this.travelMode = 'WALKING';
+        this.travelMode = 'BICYCLING';
         var originInput = document.getElementById('origin-input');
         var destinationInput = document.getElementById('destination-input');
         var modeSelector = document.getElementById('mode-selector');
@@ -141,9 +160,11 @@
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
 
-        this.setupClickListener('changemode-walking', 'WALKING');
+       /* this.setupClickListener('changemode-walking', 'WALKING');
         this.setupClickListener('changemode-transit', 'TRANSIT');
-        this.setupClickListener('changemode-driving', 'DRIVING');
+        this.setupClickListener('changemode-driving', 'DRIVING'); */
+        this.setupClickListener('changemode-biking', 'BICYCLING');
+    
 
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
