@@ -1,5 +1,5 @@
 /*
-	Radius by TEMPLATED
+	Intensify by TEMPLATED
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
@@ -18,8 +18,7 @@
 
 		var	$window = $(window),
 			$body = $('body'),
-			$header = $('#header'),
-			$footer = $('#footer');
+			$header = $('#header');
 
 		// Disable animations/transitions until the page has loaded.
 			$body.addClass('is-loading');
@@ -41,39 +40,25 @@
 				);
 			});
 
-		// Header.
-			$header.each( function() {
-
-				var t 		= jQuery(this),
-					button 	= t.find('.button');
-
-				button.click(function(e) {
-
-					t.toggleClass('hide');
-
-					if ( t.hasClass('preview') ) {
-						return true;
-					} else {
-						e.preventDefault();
-					}
-
-				});
-
+		// Scrolly.
+			$('.scrolly').scrolly({
+				offset: function() {
+					return $header.height();
+				}
 			});
 
-		// Footer.
-			$footer.each( function() {
-
-				var t 		= jQuery(this),
-					inner 	= t.find('.inner'),
-					button 	= t.find('.info');
-
-				button.click(function(e) {
-					t.toggleClass('show');
-					e.preventDefault();
+		// Menu.
+			$('#menu')
+				.append('<a href="#menu" class="close"></a>')
+				.appendTo($body)
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'right'
 				});
-
-			});
 
 	});
 

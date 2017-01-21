@@ -14,6 +14,10 @@ def map():
 def detail1():
     return render_template("detail1.html")
 
+@app.route('/combined-map')
+def combinedMap():
+    return render_template("combined-map.html")
+
 
 if __name__ == "__main__":
 	app.run()
