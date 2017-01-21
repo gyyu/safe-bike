@@ -48,35 +48,39 @@
       #floating-panel {
         position: absolute;
         top: 10px;
-        left: 77%;
+        left: 40%;
         z-index: 5;
         /*background-color: #fff;
         border: 1px solid #999;*/
         padding: 5px;
         text-align: center;
         font-family: 'Roboto','sans-serif';
-        line-height: 10px;
+        line-height: 30px;
         padding-left: 10px;
       }
     </style>
   </head>
+  		<!-- Header -->
+		<!--	<header id="header">
+				<nav class="right">
+					<a href="#menu"><span>Menu</span></a>
+        </nav>
+			</header> -->
+
+		<!-- Menu -->
+		<!--	<nav id="menu">
+				<ul class="links">
+          <li><button onclick="toggleLightMap()">Toggle Lights</button></li>
+          <li><button onclick="toggleCrimeMap()">Toggle Crime Rates</button></li>
+				</ul>
+			</nav> -->
+
   <body>
     <div id="floating-panel">
-      <div class="onoffswitch">
-      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onClick = "toggleLightMap()" checked>
-      <label class="onoffswitch-label" for="myonoffswitch">
-         <span class="onoffswitch-inner"></span>
-         <span class="onoffswitch-switch"></span>
-       </label>
-           </div>
-      <div class="onoffswitch2">
-    <input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" onClick = "toggleCrimeMap()" checked>
-    <label class="onoffswitch2-label" for="myonoffswitch2">
-        <span class="onoffswitch2-inner"></span>
-        <span class="onoffswitch2-switch"></span>
-    </label>
-</div>
-     </div>
+     
+      <button onclick="toggleLightMap()">Toggle Lights</button>
+      <button onclick="toggleCrimeMap()">Toggle Crime Rates</button>
+    </div>
     <input id="origin-input" class="controls" type="text"
         placeholder="Enter an origin location">
 
@@ -130,14 +134,12 @@
           map: map
         });
         lightsMap.set('opacity', 0.25);
-        changeGradient();
 
         // creating the crime heatmap
         crimeMap = new google.maps.visualization.HeatmapLayer({
           data: getCrimes(),
           map: map
         });
-        crimeMap.set('radius', 20);
         changeGradient2();
 
         //var infoWindow = new google.maps.InfoWindow({map: map});
@@ -185,14 +187,44 @@
       function toggleCrimeMap() {
         crimeMap.setMap(crimeMap.getMap() ? null : map);
       }
-         
-      function changeGradient(){
-        var gradient = ['rgba(69, 208, 255, 0)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)'];
+
+      function changeGradient() {
+      var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+      ]
         lightsMap.set('gradient', lightsMap.get('gradient') ? null : gradient);
       }
-      function changeGradient2(){
-      var gradient = ['rgba(255, 255, 0, 0)', 'rgba(255, 235, 0, 1)', 'rgba(255, 215, 0, 1)', 'rgba(255, 196, 0, 1)', 'rgba(255, 176, 0, 1)', 'rgba(255, 156, 0, 1)', 'rgba(255, 137, 0, 1)', 'rgba(255, 117, 0, 1)', 'rgba(255, 98, 0, 1)', 'rgba(255, 78, 0, 1)', 'rgba(255, 58, 0, 1)', 'rgba(255, 39, 0, 1)', 'rgba(255, 19, 0, 1)', 'rgba(255, 0, 0, 1)'];
-      crimeMap.set('gradient', crimeMap.get('gradient') ? null : gradient);
+      function changeGradient2() {
+      var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+      ]
+        crimeMap.set('gradient', crimeMap.get('gradient') ? null : gradient);
       }
 
       /**
@@ -207,10 +239,7 @@
         var destinationInput = document.getElementById('destination-input');
         //var modeSelector = document.getElementById('mode-selector');
         this.directionsService = new google.maps.DirectionsService;
-        this.directionsDisplay = new google.maps.DirectionsRenderer({
-          draggable: true,
-          map: map
-        });
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
 
         var originAutocomplete = new google.maps.places.Autocomplete(
