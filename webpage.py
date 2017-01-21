@@ -10,13 +10,10 @@ def home():
 def map():
     return render_template("map.html")
 
-@app.route('/auto_complete')
-
 @app.route('/detail1')
 def detail1():
     return render_template("detail1.html")
 
-@app.route('/')
 
 if __name__ == "__main__":
 	app.run()
