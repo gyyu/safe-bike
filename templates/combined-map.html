@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Place Autocomplete</title>
+    <title>Bike Safety Map</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -82,11 +82,11 @@
   </head>
   <body>
     <div id="floating-panel">
-      <button onclick="toggleHeatmap()">Toggle Lights</button>
-      <button onclick="toggleHeatmap2()">Toggle Test</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
-      <button onclick="changeOpacity()">Change opacity</button>
+      <button onclick="toggleLightMap()">Toggle Lights</button>
+      <button onclick="toggleCrimeMap()">Toggle Crime Rates</button>
+      <button onclick="changeGradient()">Change Gradient</button>
+      <button onclick="changeRadius()">Change Radius</button>
+      <button onclick="changeOpacity()">Change Opacity</button>
     </div>
     <input id="origin-input" class="controls" type="text"
         placeholder="Enter an origin location">
@@ -98,13 +98,15 @@
 
     <div id="map"></div>
     <script src="js/lights.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsXgmx0SmTZeF5KdrqaRWuUYK3xqSed9Q&libraries=places,visualization&callback=initMap" async defer>   </script>
+    <script src="js/crime.js"></script>
+    <script src="js/racks.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsXgmx0SmTZeF5KdrqaRWuUYK3xqSed9Q&libraries=places,visualization&callback=initMap" async defer></script>
 
     <script>
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
 
-      var map, heatmap, heatmap2;
+      var map, lightsMap, crimeMap;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -113,14 +115,37 @@
           zoom: 15,
         });
 
-        //creating the heatmap
-        heatmap = new google.maps.visualization.HeatmapLayer({
+        // make icon base
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var icons = {
+          biking: {
+            icon: iconBase + 'cycling.png'
+          }
+        };
+
+        function addMarker(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        }
+
+        var features = getBikeRacks();
+
+        for (var i = 0, feature; feature = features[i]; i++) {
+          addMarker(feature);
+        }
+
+        // creating the lights heatmap
+        lightsMap = new google.maps.visualization.HeatmapLayer({
           data: getLights(),
           map: map
         });
 
-        heatmap2 = new google.maps.visualization.HeatmapLayer({
-          data: getPoints2(),
+        // creating the crime heatmap
+        crimeMap = new google.maps.visualization.HeatmapLayer({
+          data: getCrimes(),
           map: map
         });
         changeGradient2();
@@ -148,9 +173,8 @@
 
         //autocomplete service
         new AutocompleteDirectionsHandler(map);
-
-        
       }
+
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -159,11 +183,11 @@
       }
 
       //heat map stuff
-      function toggleHeatmap() {
-        heatmap.setMap(heatmap.getMap() ? null : map);
+      function toggleLightMap() {
+        lightsMap.setMap(lightsMap.getMap() ? null : map);
       }
-      function toggleHeatmap2() {
-        heatmap2.setMap(heatmap2.getMap() ? null : map);
+      function toggleCrimeMap() {
+        crimeMap.setMap(crimeMap.getMap() ? null : map);
       }
 
       function changeGradient() {
@@ -183,7 +207,7 @@
           'rgba(191, 0, 31, 1)',
           'rgba(255, 0, 0, 1)'
       ]
-        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+        lightsMap.set('gradient', lightsMap.get('gradient') ? null : gradient);
       }
       function changeGradient2() {
       var gradient = [
@@ -202,7 +226,7 @@
           'rgba(191, 0, 31, 1)',
           'rgba(255, 0, 0, 1)'
       ]
-        heatmap2.set('gradient', heatmap.get('gradient') ? null : gradient);
+        crimeMap.set('gradient', crimeMap.get('gradient') ? null : gradient);
       }
       function changeRadius() {
         heatmap.set('radius', heatmap.get('radius') ? null : 20);
@@ -211,17 +235,6 @@
       function changeOpacity() {
         heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
       } 
-      // Heatmap data: 500 Points
-      function getPoints() {
-        return [new google.maps.LatLng(39.947121729338846,-75.207085902877651),new google.maps.LatLng(39.948439738653342,-75.206457645608438),new google.maps.LatLng(39.948449651694396,-75.206109379047334),new google.maps.LatLng(39.94893617525949,-75.20564335760136),new google.maps.LatLng(39.948627857412973,-75.205761055332815)
-      ];
-      }
-
-      function getPoints2(){
-        return [
-        new google.maps.LatLng(39.903311752080235,-75.158257058199126),new google.maps.LatLng(39.902740487287886,-75.151949731038243),new google.maps.LatLng(39.902804733103338,-75.152458081141035),new google.maps.LatLng(39.907819022230733,-75.155015484674465)
-        ];    
-      }
       
       /**
         * @constructor
@@ -299,8 +312,6 @@
           }
         });
       };
-
-      
 
     </script>
     
