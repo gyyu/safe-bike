@@ -31,16 +31,16 @@ Simply install Flask and deploy.
 
 In order to make the web app:
 
-- flask (python)
-- html
-- css
-- javascript
-- jquery
+- Flask (Python)
+- HTML
+- CSS
+- JavaScript
+- jQuery
 - Google Maps API (for representing data points and routing between start and end destinations)
 
 In order to parse and sort through millions of data plots:
 
-- python (scripts used to reduce data can be found in the data file)
+- Python (scripts used to reduce data can be found in the data file)
 
 Other sources:
 
