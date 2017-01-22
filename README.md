@@ -1,23 +1,27 @@
-# Safe Bike
+# Velocity
 
-Safe Bike is a web app geared towards promoting societal well-being by ensuring safer, more secure bike rides. Biking is a mode of transportation that is common to people of all socioeconomic and cultural backgrounds, and is simply a common-sense, clean, and easy way to get around the city (and get exercise)! Safe Bike is easy to use and understand, and aggregates millions of points of data in order to ensure your next trip is the best and safest one yet.
+Velocity is a web app geared towards promoting societal well-being by ensuring safer, more secure bike rides. Biking is a mode of transportation that is common to people of all socioeconomic and cultural backgrounds, and is simply a common-sense, clean, and easy way to get around the city (and get exercise)! Velocity is easy to use and understand, and aggregates millions of points of data in order to ensure your next trip is the best and safest one yet.
 
 Made during PennApps XV, January 20-22, 2017.
 
-### How to use Safe Bike
+### How to use Velocity
 
 Simply install Flask and deploy. 
 	
 1. Clone or download a .zip and extract this repository
 2. Install Flask
-	
+
+```
 	pip3 install flask
+```
 
 3. Launch the web app
-	
-	python3 webpage.py
 
-### Features of Safe Bike
+```
+	python3 webpage.py
+```
+
+### Features of Velocity
 
 - heatmaps of crime data and street lighting across Philadelphia that are easy to understand
 - markers for bike racks and bike share locations
@@ -27,7 +31,7 @@ Simply install Flask and deploy.
 - ability to drag and drop route in order to best fit your needs
 - generation of text directions along sidebar of page
 
-### How we made Safe Bike
+### How we made Velocity
 
 In order to make the web app:
 
