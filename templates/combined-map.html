@@ -116,6 +116,7 @@
     <script src="static/js/lights.js"></script>
     <script src="static/js/crime.js"></script>
     <script src="static/js/racks.js"></script>
+    <script src="static/js/bikeshare.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsXgmx0SmTZeF5KdrqaRWuUYK3xqSed9Q&libraries=places,visualization&callback=initMap" async defer></script>
 
@@ -136,6 +137,9 @@
         var icons = {
           biking: {
             icon: 'http://i.imgur.com/w40IqzB.png'
+          },
+          share: {
+            icon: 'http://i.imgur.com/wXK8q1W.png'
           }
         };
 
@@ -151,6 +155,12 @@
 
         for (var i = 0, feature; feature = features[i]; i++) {
           addMarker(feature);
+        }
+
+        var features2 = getBikeShares();
+
+        for (var j = 0, feature2; feature2 = features2[j]; j++) {
+          addMarker(feature2);
         }
 
         // creating the lights heatmap
