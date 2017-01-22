@@ -2788,11 +2788,11 @@
 			}
 
 			#header nav.left {
-				left: 1em;
+				left: none;
 			}
 
 			#header nav.right {
-				display: none;
+				display: 1em;
 			}
 
 	}
