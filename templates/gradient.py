@@ -18,7 +18,7 @@ def process(g):
         print(x)
         t.append( (int(x[0]), int(x[1]), int(x[2]), x[3]) )
     return t
-r = colorGradient((255, 255, 0, 1), (255,0, 0, 1), 14)
+r = colorGradient((176, 54, 234, 1), (217, 0, 200, 1), 14)
 print(len(r))
 print(process(invert(r)))
 g = ['rgba('+str(r[x])[1:-1]+')' for x in range(len(r))]

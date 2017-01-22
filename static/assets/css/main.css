@@ -2317,6 +2317,7 @@
     .onoffswitch {
     position: relative; width: 150px;
 	float:left;
+	
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
@@ -2364,6 +2365,7 @@
 
 .onoffswitch2 {
     position: relative; width: 190px;
+	padding: 0px, 0px, 0px, 20px;
 	float: left;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
