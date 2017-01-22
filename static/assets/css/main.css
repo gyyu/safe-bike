@@ -2385,13 +2385,13 @@
     box-sizing: border-box;
 }
 .onoffswitch2-inner:before {
-    content: "Toggle Crime Rates";
+    content: "Crime Rates";
     padding-left: 1px;
     background-color: #19A833; color: #FFFFFF;
 }
 .onoffswitch2-inner:after {
-    content: "Toggle Crime Rates";
-    padding-right: 17px;
+    content: "Crime Rates";
+    padding-right: 47px;
     background-color: #DB5C5C; color: #FFFFFF;
     text-align: right;
 }
@@ -2488,7 +2488,7 @@
 }
 .onoffswitch5-inner:after {
     content: "Bike Shares";
-    padding-right: 55px;
+    padding-right: 52px;
     background-color: #DB5C5C; color: #FFFFFF;
     text-align: right;
 }
