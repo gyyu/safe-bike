@@ -2315,8 +2315,7 @@
 /* Button */
 
     .onoffswitch {
-    position: relative; width: 150px;
-	float:left;
+    position: relative; width: 190px;
 	
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
@@ -2337,13 +2336,13 @@
     box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-    content: "Toggle Lights";
+    content: "Lights";
     padding-left: 3px;
     background-color: #19A833; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
-    content: "Toggle Lights";
-    padding-right: 17px;
+    content: "Lights";
+    padding-right: 70px;
     background-color: #DB5C5C; color: #FFFFFF;
     text-align: right;
 }
@@ -2352,7 +2351,7 @@
 	height: 15px;
     background: #FFFFFF;
     position: absolute; top: 0; bottom: 0;
-    right: 120px;
+    right: 165px;
     border: 2px solid #FFFFFF; border-radius: 18px;
     transition: all 0.3s ease-in 0s; 
 }
@@ -2409,6 +2408,161 @@
     margin-left: 0;
 }
 .onoffswitch2-checkbox:checked + .onoffswitch2-label .onoffswitch2-switch {
+    right: 0px; 
+}
+    .onoffswitch3 {
+    position: relative; width: 190px;
+	float:left;
+	
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch3-checkbox {
+    display: none;
+}
+.onoffswitch3-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+}
+.onoffswitch3-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch3-inner:before, .onoffswitch3-inner:after {
+    display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 14px; color: white; font-family: "Montserrat", Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch3-inner:before {
+    content: "Bike Racks";
+    padding-left: 3px;
+    background-color: #19A833; color: #FFFFFF;
+}
+.onoffswitch3-inner:after {
+    content: "Bike Racks";
+    padding-right: 55px;
+    background-color: #DB5C5C; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch3-switch {
+    display: block; width: 11px; margin: 7px;
+	height: 15px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 165px;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch3-checkbox:checked + .onoffswitch3-label .onoffswitch3-inner {
+    margin-left: 0;
+}
+.onoffswitch3-checkbox:checked + .onoffswitch3-label .onoffswitch3-switch {
+    right: 0px; 
+}
+.onoffswitch4 {
+    position: relative; 
+	height: 30px;
+	width: 190px;
+	margin-top: 100px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch4-checkbox {
+    display: none;
+}
+.onoffswitch4-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+}
+.onoffswitch4-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch4-inner:before, .onoffswitch4-inner:after {
+    display: block; 
+	float: left; 
+	width: 50%; 
+	height: 25px; 
+	padding: 0; 
+	line-height: 25px;
+    font-size: 14px; 
+	color: white; 
+	font-family: "Montserrat", Arial, sans-serif; 
+	font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch4-inner:before {
+    content: "Bike Shares";
+    padding-left: 3px;
+    background-color: #19A833; color: #FFFFFF;
+}
+.onoffswitch4-inner:after {
+    content: "Bike Shares";
+    padding-right: 60px;
+    background-color: #DB5C5C; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch4-switch {
+    display: block; 
+	width: 11px; 
+	height: 15px;
+	margin: 7px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 165px;
+    border: 2px solid #FFFFFF; border-radius: 18px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch4-checkbox:checked + .onoffswitch4-label .onoffswitch4-inner {
+    margin-left: 0;
+}
+.onoffswitch4-checkbox:checked + .onoffswitch4-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+.onoffswitch5 {
+    position: relative; width: 190px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch5-checkbox {
+    display: none;
+}
+.onoffswitch5-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch5-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch5-inner:before, .onoffswitch5-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch5-inner:before {
+    content: "Bike Shares";
+    padding-left: 10px;
+    background-color: #19A833; color: #FFFFFF;
+}
+.onoffswitch5-inner:after {
+    content: "Bike Shares";
+    padding-right: 10px;
+    background-color: #DB5C5C; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch5-switch {
+    display: block; width: 20px; margin: 5px;
+	height: 15px;
+	
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 156px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch5-checkbox:checked + .onoffswitch5-label .onoffswitch5-inner {
+    margin-left: 0;
+}
+.onoffswitch5-checkbox:checked + .onoffswitch5-label .onoffswitch5-switch {
     right: 0px; 
 }
 

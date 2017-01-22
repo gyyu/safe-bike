@@ -47,8 +47,9 @@
 
       #floating-panel {
         position: fixed;
-        top: 18px;
-        margin-left: 25%;
+        /*top: 18px;*/
+        margin-top: 5%;
+        /*margin-left: 25%;*/
         z-index: 5;
         /*background-color: #fff;
         border: 1px solid #999;*/
@@ -101,20 +102,47 @@
         placeholder="Enter a destination location">
 
       <div id="floating-panel">
-      <div class="onoffswitch">
-      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onClick = "toggleLightMap()" checked>
-      <label class="onoffswitch-label" for="myonoffswitch">
-         <span class="onoffswitch-inner"></span>
-         <span class="onoffswitch-switch"></span>
-       </label>
+
+        <ul style="list-style: none">
+        <li>
+          <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onClick = "toggleLightMap()" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+              </div>
+           </li>
+          <li>
+            <div class="onoffswitch2">
+            <input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" onClick = "toggleCrimeMap()" checked>
+            <label class="onoffswitch2-label" for="myonoffswitch2">
+                <span class="onoffswitch2-inner"></span>
+                <span class="onoffswitch2-switch"></span>
+            </label>
+            </div>
+          </li>
+          <li>
+            <div class="onoffswitch3">
+            <input type="checkbox" name="onoffswitch3" class="onoffswitch3-checkbox" id="myonoffswitch3" onClick = "toggleRacks()" checked>
+            <label class="onoffswitch3-label" for="myonoffswitch3">
+                <span class="onoffswitch3-inner"></span>
+                <span class="onoffswitch3-switch"></span>
+            </label>
+            </div>
+          </li>
+          <li>
+            <div class="onoffswitch5">
+              <input type="checkbox" name="onoffswitch5" class="onoffswitch5-checkbox" id="myonoffswitch5" checked>
+              <label class="onoffswitch5-label" for="myonoffswitch5">
+                  <span class="onoffswitch5-inner"></span>
+                  <span class="onoffswitch5-switch"></span>
+              </label>
            </div>
-      <div class="onoffswitch2">
-    <input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" onClick = "toggleCrimeMap()" checked>
-    <label class="onoffswitch2-label" for="myonoffswitch2">
-        <span class="onoffswitch2-inner"></span>
-        <span class="onoffswitch2-switch"></span>
-    </label>
-  </div>
+          </li>
+    </ul>
+      
+      
      </div>
      </div>
     <div id="right-panel"></div>
@@ -131,7 +159,8 @@
       // parameter when you first load the API. For example:
 
       var map, lightsMap, crimeMap;
-
+      var shareMarkers = [];
+      var rackMarkers = [];
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
@@ -149,24 +178,30 @@
           }
         };
 
-        function addMarker(feature) {
+        function addMarker(feature, i) {
           var marker = new google.maps.Marker({
             position: feature.position,
             icon: icons[feature.type].icon,
             map: map
           });
+          if(i==0){
+            rackMarkers.push(marker);
+          }
+          else{
+            shareMarkers.push(marker);
+          }
         }
 
         var features = getBikeRacks();
 
         for (var i = 0, feature; feature = features[i]; i++) {
-          addMarker(feature);
+          addMarker(feature, 0);
         }
 
         var features2 = getBikeShares();
 
         for (var j = 0, feature2; feature2 = features2[j]; j++) {
-          addMarker(feature2);
+          addMarker(feature2, 1);
         }
 
         // creating the lights heatmap
@@ -230,7 +265,17 @@
       function toggleCrimeMap() {
         crimeMap.setMap(crimeMap.getMap() ? null : map);
       }
-         
+      function toggleRacks(){
+        setMarkers(rackMarkers, rackMarkers[0].getMap() ? null: map);
+      }
+      function toggleShares(){
+        setMarkers(shareMarkers, shareMarkers[0].getMap() ? null: map);
+      }
+      function setMarkers(markers, map){
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
       function changeGradient(){
         var gradient = ['rgba(69, 208, 255, 0)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)', 'rgba(69, 208, 255, 1)'];
         lightsMap.set('gradient', lightsMap.get('gradient') ? null : gradient);
